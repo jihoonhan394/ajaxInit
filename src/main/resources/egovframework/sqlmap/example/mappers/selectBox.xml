@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.selectBox.service.impl.SelectBoxMapper">
+
+	<!-- 부모 테이블 조회 -->
+	<select id="selectParentBoxServiceList" resultType="egovMap">
+	SELECT *
+	  FROM T_BRAND
+	</select>
+	
+	<!-- 자식 테이블 조회 -->
+	<select id="selectChildBoxServiceList" parameterType="String" resultType="egovMap">
+	SELECT *
+	  FROM T_PRD
+		  <where>
+		  BRAND_CD = #{_parameter}
+		  </where>
+	  ORDER BY PRD_CD
+	</select>
+	
+</mapper>
